@@ -17,7 +17,7 @@ pipeline {
 
     stage('Build Projects') {
       steps {
-        sh '''mftp_build.sh ${GIT_COMMIT} ${GIT_CRED} ${REPO_NAME} ${TEMPLATE_REPO_URL} ${LOCAL_TEMPLATE_DIR} ${TEMPLATE_DIR_NAME} ${PROJECT_PLACE_HOLDER} ${COMPLETE_PROJ_DIR} ${COMPLETE_PROJ_URL}
+        sh '''/opt/tools/scripts/mftp_build.sh ${GIT_COMMIT} ${GIT_CRED} ${REPO_NAME} ${TEMPLATE_REPO_URL} ${LOCAL_TEMPLATE_DIR} ${TEMPLATE_DIR_NAME} ${PROJECT_PLACE_HOLDER} ${COMPLETE_PROJ_DIR} ${COMPLETE_PROJ_URL}
       '''
       }
     }
