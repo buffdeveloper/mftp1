@@ -6,12 +6,12 @@ pipeline {
 
   }
   stages {
-    stage('Initialize Tools') {
+    stage('Echo Vars') {
       steps {
-        sh '''echo "PATH = ${PATH}"
-            echo "M2_HOME = ${M2_HOME}"
-            mvn -version
-            echo ${AWS_ACCESS_KEY_ID}'''
+        sh '''echo ${GIT_COMMIT}
+            echo ${GIT_CRED}
+            echo ${TEMPLATE_REPO_URL}
+            echo ${COMPLETE_PROJ_DIR}'''
       }
     }
 
@@ -27,7 +27,6 @@ pipeline {
     maven 'Maven'
   }
   environment {
-    MAVEN_ARGS = '-Dmaven.deploy.skip=true -Dmaven.car.deploy.skip=false -Duser.name=${env.adminUser} -Dconsole.pass=${env.consolePassword} -Dserver.url=${env.devServerURL} -Dkeypass=${env.keystorePass} -Dkeystoredir=${env.keystorePath}'
     GIT_CRED = credentials('github-creds')
     REPO_NAME = 'mftp1'
     TEMPLATE_REPO_URL = 'https://github.com/buffdeveloper/mftp_temp.git'
